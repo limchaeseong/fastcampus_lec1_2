@@ -1,0 +1,44 @@
+debug: false
+management.endpoints.web.exposure.include: "*"
+
+logging:
+  level:
+    com.fastcampus.projectboard: debug
+    org.springframework.web.servlet: debug # servlet Logging
+    org.hibernate.type.descriptor.sql.BasicBinder: trace # sql 변수 parameter 값 binding해서 Logging
+    org.hibernate.orm.jdbc.bind : trace # Hibernater가 버전업(Spring boot v2.7.6 -> v3.0.0 이상)되면서 변수 BasicBinder logging 변경
+
+spring:
+  application.name: project-board
+  datasource:
+    url: jdbc:mysql://localhost:3306/board
+    username: limchaeseong
+    password: limchaeseong
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: create
+#    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+      hibernate.transaction.jta.platform: org.hibernate.service.jta.JtaPlatform
+  h2:
+    console:
+      enabled: true
+  sql.init.mode: always
+  data.rest:
+    base-path: /api
+    detection-strategy: annotated
+
+---
+
+#spring:
+#  config.activate.on-profile: testdb
+#  datasource:
+#    url: jdbc:h2:mem:board;mode-mysql
+#    driver-class-name: org.h2.Driver
+#  sql.init.mode: always
+#  test.database.replace: none --Test에서 @DataJpaTest로 인해 H2가 아닌 Mysql로 자동 연결되는걸 방지
+#  jpa.hibernate.ddl-auto: none
