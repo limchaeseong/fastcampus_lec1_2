@@ -24,9 +24,9 @@ spring:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
       hibernate.transaction.jta.platform: org.hibernate.service.jta.JtaPlatform
-  h2:
-    console:
-      enabled: true
+#  h2:
+#    console:
+#      enabled: false
   sql.init.mode: always
   data.rest:
     base-path: /api
