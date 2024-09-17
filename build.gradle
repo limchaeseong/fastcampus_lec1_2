@@ -24,6 +24,9 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.data:spring-data-rest-hal-explorer' // API 시각화
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest' // Rest Repository
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
